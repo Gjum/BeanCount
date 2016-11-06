@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.liteloader'
+
+version = "0.0.1"
+group = "gjum.minecraft.liteloader"
+archivesBaseName = "beancount"
+
+minecraft {
+    version = "1.10.2"
+    mappings = "snapshot_20160901"
+    runDir = "run"
+}
+
+litemod {
+    json {
+        name = "beancount"
+        description = "Count chest contents"
+        author = "Gjum"
+    }
+}
+
+jar {
+    from litemod.outputs
+}
